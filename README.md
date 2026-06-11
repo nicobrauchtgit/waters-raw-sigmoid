@@ -89,19 +89,9 @@ For a precursor-loss sigmoid, choose a window tight around the intact precursor 
 
 ## Reader: why openwraw?
 
-Waters' `.raw` is a directory of binary files (`_FUNC*.DAT/IDX`, `_FUNCTNS.INF`, `_HEADER.TXT`, `_extern.inf`, …). Waters has never published a spec. Readers either link Waters DLLs (Windows-only, license-bound) or reverse-engineer the layout from public PRIDE datasets.
+Waters' `.raw` is a directory of binary files. Waters has never published a spec, so every other reader either links a Waters DLL (Windows-only, license-bound, version-fragile) or piggybacks on the COM-based `DACServer.dll` (32-bit only).
 
-| Tool | Approach | Platform | Why not used here |
-|---|---|---|---|
-| **openwraw** | Rust core + PyO3 bindings, format reverse-engineered from PRIDE; pure file IO | Linux/macOS/Windows | **chosen** |
-| rainbow-api | Pure-Python, also reverse-engineered | All | works for MS, IMS support less documented |
-| multiplierz / mzAPI | Wraps Waters `MassLynxRaw.dll` | Windows + DLL | recent MassLynx 4.2 installs no longer ship `MassLynxRaw.dll` |
-| masslynx_sdk_public | Python port of official Waters SDK 4.7 | Windows + DLLs | needs Waters registration + admin approval |
-| Waters DACServer.dll (COM) | Free w/ MassLynx, accessed via `win32com` | Windows + 32-bit Python | DACServer is registered under WOW6432Node (32-bit COM); requires a separate 32-bit Python install on a 64-bit machine |
-| Waters Databridge | Official `.raw → mzML` GUI converter | Windows GUI | manual, defeats the automation |
-| pyopenms | None — Waters not supported | — | confirmed failing in `_test_reader*.py` |
-
-`openwraw`'s killer feature: same `pip install` works on macOS for development and on Windows in production. No platform branching, no native deps, identical behavior.
+[`openwraw`](https://github.com/Sigilweaver/OpenWRaw) is a clean-room implementation — the format is reverse-engineered from public PRIDE datasets and shipped as a Rust crate plus a PyO3 wheel. One `pip install`, runs on Linux / macOS / Windows, no native deps, IMS support included. That's why.
 
 ## Validation
 
