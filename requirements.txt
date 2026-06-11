@@ -1,0 +1,5 @@
+# Pinning openwraw is the right call here — Maik runs this once, and the
+# format-decoder behavior we tested against is whatever ships with this
+# version. If openwraw bumps a minor and changes a number subtly, we want
+# to know on purpose.
+openwraw>=0.1,<0.2

@@ -1,0 +1,18 @@
+# Experimental data — local only. Maik will point the script at his own
+# folder of .raw directories on Windows. The sample MR_010626_*.raw and the
+# reference xlsx live here for our local exploration only.
+data/
+
+# Python / venvs / editor
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+.direnv/
+.envrc
+*.egg-info/
+.ipynb_checkpoints/
+
+# Runtime logs from extract_intensities.py
+*.log
+run-*/
