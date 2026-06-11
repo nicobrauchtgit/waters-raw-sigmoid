@@ -103,6 +103,14 @@ Cheap sanity checks before running against a real dataset:
 - Run the script on a folder spanning a CE range. The fractions should trace a sigmoid (chemistry-dependent — that's an experiment-design question).
 - If you can get a previously filled-out copy of the spreadsheet, drop the same `.raw` files in a folder and check that our `fraction` matches the value in row 6 of the corresponding block.
 
+## Notice
+
+This project is independent and **not affiliated with, endorsed by, or sponsored by Waters Corporation**. "Waters", "MassLynx", and "SYNAPT" are trademarks of Waters Corporation, used here descriptively for interoperability purposes only.
+
+The repository contains **no Waters software, DLLs, SDK headers, format specifications, or sample data**. The reader half of the pipeline ([openwraw](https://github.com/Sigilweaver/OpenWRaw)) is an independent clean-room implementation derived from public PRIDE datasets; see its repository for details. This script only reads `.raw` files that the user already lawfully possesses on their own machine.
+
+Licensed under the [Apache License, Version 2.0](LICENSE).
+
 ## Layout
 
 ```
